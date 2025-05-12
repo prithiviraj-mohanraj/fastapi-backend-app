@@ -28,7 +28,6 @@ def upgrade() -> None:
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('post_id', 'user_id')
     )
-    op.drop_table('demo')
     op.add_column('posts', sa.Column('published', sa.Boolean(), server_default='TRUE', nullable=False))
     op.add_column('posts', sa.Column('created_at', sa.TIMESTAMP(timezone=True), server_default=sa.text('now()'), nullable=False))
     # ### end Alembic commands ###
